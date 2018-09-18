@@ -82,13 +82,13 @@ const applyDataToElement = function (editor, tableElm, data) {
       'data-mce-cell-padding': data.cellpadding,
       'data-mce-border': data.border
     });
-  } else {
-    Tools.extend(attrs, {
-      border: data.border,
-      cellpadding: data.cellpadding,
-      cellspacing: data.cellspacing
-    });
   }
+
+  Tools.extend(attrs, {
+    border: data.border,
+    cellpadding: data.cellpadding,
+    cellspacing: data.cellspacing
+  });
 
   // TODO: this has to be reworked somehow, for example by introducing dedicated option, which
   // will control whether child TD/THs should be processed or not
@@ -223,11 +223,11 @@ const open = function (editor, isProps?) {
           { label: 'Border', name: 'border' },
           { label: 'Caption', name: 'caption', type: 'checkbox' }
         ] : [
-          colsCtrl,
-          rowsCtrl,
+            colsCtrl,
+            rowsCtrl,
             { label: 'Width', name: 'width', onchange: Fun.curry(Helpers.updateStyleField, editor) },
             { label: 'Height', name: 'height', onchange: Fun.curry(Helpers.updateStyleField, editor) }
-        ]
+          ]
       },
 
       {
